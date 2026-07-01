@@ -1,5 +1,6 @@
 package dev.pedrotxc.rest_with_spring_boot_and_java.controller;
 
+import dev.pedrotxc.rest_with_spring_boot_and_java.exception.UnsupportedMathOperationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ public class MathController {
     public Double sum(@PathVariable("numberOne") String numberOne, @PathVariable("numberTwo") String numberTwo) throws Exception {
 
         if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
-            throw new IllegalArgumentException();
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
@@ -20,7 +21,7 @@ public class MathController {
 
     private Double convertToDouble(String strNumber) {
         if (strNumber == null || strNumber.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
         String number = strNumber.replace(",", ".");
