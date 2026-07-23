@@ -2,7 +2,9 @@ package dev.pedrotxc.rest_with_spring_boot_and_java.service;
 
 import dev.pedrotxc.rest_with_spring_boot_and_java.exception.UnsupportedMathOperationException;
 import dev.pedrotxc.rest_with_spring_boot_and_java.util.MathUtil;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MathService {
 
     public Double sum(String numberOne, String numberTwo) {
